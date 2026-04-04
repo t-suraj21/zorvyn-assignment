@@ -100,8 +100,8 @@ export const Transactions: React.FC = () => {
           className="mb-8 flex items-center justify-between"
         >
           <div>
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-white">All Transactions</h2>
-            <p className="text-gray-600 dark:text-gray-400 mt-1">
+            <h2 className={`text-3xl font-bold ${darkMode ? 'text-white' : 'text-black'}`}>All Transactions</h2>
+            <p className={`${darkMode ? 'text-gray-400' : 'text-gray-700'} mt-1`}>
               View and manage all your transactions
             </p>
           </div>
@@ -139,21 +139,21 @@ export const Transactions: React.FC = () => {
           transition={{ duration: 0.3, delay: 0.1 }}
           className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8"
         >
-          <div className="bg-white dark:bg-gray-800 rounded-lg border-2 border-gray-200 dark:border-gray-700 p-6 shadow-sm">
-            <p className="text-gray-600 dark:text-gray-400 text-sm font-medium">Total Transactions</p>
-            <p className="text-2xl font-bold text-gray-900 dark:text-white mt-2">{filteredTransactions.length}</p>
+          <div className={`${darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'} rounded-lg border-2 p-6 shadow-sm`}>
+            <p className={`${darkMode ? 'text-gray-400' : 'text-gray-700'} text-sm font-medium`}>Total Transactions</p>
+            <p className={`text-2xl font-bold ${darkMode ? 'text-white' : 'text-black'} mt-2`}>{filteredTransactions.length}</p>
           </div>
-          <div className="bg-white dark:bg-gray-800 rounded-lg border-2 border-gray-200 dark:border-gray-700 p-6 shadow-sm">
-            <p className="text-gray-600 dark:text-gray-400 text-sm font-medium">Total Income</p>
-            <p className="text-2xl font-bold text-green-600 dark:text-green-400 mt-2">
+          <div className={`${darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'} rounded-lg border-2 p-6 shadow-sm`}>
+            <p className={`${darkMode ? 'text-gray-400' : 'text-gray-700'} text-sm font-medium`}>Total Income</p>
+            <p className={`text-2xl font-bold ${darkMode ? 'text-green-400' : 'text-green-600'} mt-2`}>
               {formatCurrency(filteredTransactions
                 .filter(t => t.type === 'income')
                 .reduce((sum, t) => sum + t.amount, 0))}
             </p>
           </div>
-          <div className="bg-white dark:bg-gray-800 rounded-lg border-2 border-gray-200 dark:border-gray-700 p-6 shadow-sm">
-            <p className="text-gray-600 dark:text-gray-400 text-sm font-medium">Total Expenses</p>
-            <p className="text-2xl font-bold text-red-600 dark:text-red-400 mt-2">
+          <div className={`${darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'} rounded-lg border-2 p-6 shadow-sm`}>
+            <p className={`${darkMode ? 'text-gray-400' : 'text-gray-700'} text-sm font-medium`}>Total Expenses</p>
+            <p className={`text-2xl font-bold ${darkMode ? 'text-red-400' : 'text-red-600'} mt-2`}>
               {formatCurrency(filteredTransactions
                 .filter(t => t.type === 'expense')
                 .reduce((sum, t) => sum + t.amount, 0))}
@@ -176,6 +176,7 @@ export const Transactions: React.FC = () => {
             filterCategory={filterCategory}
             onCategoryChange={setFilterCategory}
             onReset={resetFilters}
+            darkMode={darkMode}
           />
         </motion.div>
 
@@ -184,13 +185,14 @@ export const Transactions: React.FC = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3, delay: 0.3 }}
-          className="bg-white dark:bg-gray-800 rounded-lg border-2 border-gray-200 dark:border-gray-700 shadow-sm overflow-hidden"
+          className={`${darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'} rounded-lg border-2 shadow-sm overflow-hidden`}
         >
           <TransactionList
             transactions={filteredTransactions}
             userRole={userRole}
             onDelete={deleteTransaction}
             onEdit={handleEditClick}
+            darkMode={darkMode}
           />
         </motion.div>
       </div>
