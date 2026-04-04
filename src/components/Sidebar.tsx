@@ -30,7 +30,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, userRole, dar
           className={`${
             darkMode
               ? 'bg-gradient-to-b from-gray-800 to-gray-900'
-              : 'bg-gradient-to-b from-purple-600 to-purple-700'
+              : 'bg-gradient-to-b from-gray-100 to-gray-200'
           } h-screen w-64 shadow-2xl overflow-y-auto`}
         >
           <div className="p-6">
@@ -46,8 +46,8 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, userRole, dar
                 }`}>₹</span>
               </div>
               <div>
-                <h1 className={`text-xl font-bold ${darkMode ? 'text-white' : 'text-white'}`}>FinFlow</h1>
-                <p className={`text-xs ${darkMode ? 'text-gray-400' : 'text-purple-100'}`}>
+                <h1 className={`text-xl font-bold ${darkMode ? 'text-white' : 'text-black'}`}>FinFlow</h1>
+                <p className={`text-xs ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
                   Finance Manager
                 </p>
               </div>
@@ -65,10 +65,10 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, userRole, dar
                       isActive(item.path)
                         ? darkMode
                           ? 'bg-purple-600 text-white shadow-lg'
-                          : 'bg-white bg-opacity-20 text-white shadow-lg'
+                          : 'bg-purple-500 text-white shadow-lg'
                         : darkMode
                         ? 'text-gray-300 hover:bg-gray-700'
-                        : 'text-purple-100 hover:bg-white hover:bg-opacity-10'
+                        : 'text-gray-700 hover:bg-gray-300'
                     }`}
                   >
                     <Icon size={20} />
@@ -79,19 +79,19 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, userRole, dar
             </nav>
 
             {/* User Section */}
-            <div className={`border-t ${darkMode ? 'border-gray-700' : 'border-purple-500'} pt-4 mt-auto`}>
+            <div className={`border-t ${darkMode ? 'border-gray-700' : 'border-gray-300'} pt-4 mt-auto`}>
               <div className={`rounded-xl p-4 mb-4 ${
                 darkMode
                   ? 'bg-gray-700'
-                  : 'bg-white bg-opacity-10'
+                  : 'bg-gray-300'
               }`}>
-                <p className={`text-xs mb-1 ${darkMode ? 'text-gray-400' : 'text-purple-100'}`}>
+                <p className={`text-xs mb-1 ${darkMode ? 'text-gray-400' : 'text-gray-700'}`}>
                   Logged in as
                 </p>
-                <p className={`text-sm font-bold ${darkMode ? 'text-white' : 'text-white'}`}>
+                <p className={`text-sm font-bold ${darkMode ? 'text-white' : 'text-black'}`}>
                   {userRole === 'admin' ? 'Admin' : 'Viewer'}
                 </p>
-                <p className={`text-xs mt-1 ${darkMode ? 'text-gray-400' : 'text-purple-200'}`}>
+                <p className={`text-xs mt-1 ${darkMode ? 'text-gray-400' : 'text-gray-700'}`}>
                   {userRole === 'admin' ? 'Full Access' : 'View Only'}
                 </p>
               </div>
@@ -99,7 +99,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, userRole, dar
               <button className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${
                 darkMode
                   ? 'text-gray-300 hover:bg-gray-700'
-                  : 'text-purple-100 hover:bg-white hover:bg-opacity-10'
+                  : 'text-black hover:bg-gray-300'
               }`}>
                 <LogOut size={18} />
                 <span className="text-sm font-medium">Logout</span>
@@ -130,7 +130,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, userRole, dar
           className={`${
             darkMode
               ? 'bg-gradient-to-b from-gray-800 to-gray-900'
-              : 'bg-gradient-to-b from-purple-600 to-purple-700'
+              : 'bg-gradient-to-b from-gray-100 to-gray-200'
           } fixed left-0 top-0 h-screen w-64 shadow-2xl z-50 overflow-y-auto`}
         >
           <div className="p-6">
@@ -151,8 +151,8 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, userRole, dar
                 }`}>₹</span>
               </div>
               <div>
-                <h1 className={`text-xl font-bold ${darkMode ? 'text-white' : 'text-white'}`}>FinFlow</h1>
-                <p className={`text-xs ${darkMode ? 'text-gray-400' : 'text-purple-100'}`}>
+                <h1 className={`text-xl font-bold ${darkMode ? 'text-white' : 'text-black'}`}>FinFlow</h1>
+                <p className={`text-xs ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
                   Finance Manager
                 </p>
               </div>
@@ -171,10 +171,10 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, userRole, dar
                       isActive(item.path)
                         ? darkMode
                           ? 'bg-purple-600 text-white shadow-lg'
-                          : 'bg-white bg-opacity-20 text-white shadow-lg'
+                          : 'bg-purple-500 text-white shadow-lg'
                         : darkMode
                         ? 'text-gray-300 hover:bg-gray-700'
-                        : 'text-purple-100 hover:bg-white hover:bg-opacity-10'
+                        : 'text-gray-700 hover:bg-gray-300'
                     }`}
                   >
                     <Icon size={20} />
@@ -185,19 +185,19 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, userRole, dar
             </nav>
 
             {/* User Section */}
-            <div className={`border-t ${darkMode ? 'border-gray-700' : 'border-purple-500'} pt-4 mt-auto`}>
+            <div className={`border-t ${darkMode ? 'border-gray-700' : 'border-gray-300'} pt-4 mt-auto`}>
               <div className={`rounded-xl p-4 mb-4 ${
                 darkMode
                   ? 'bg-gray-700'
-                  : 'bg-white bg-opacity-10'
+                  : 'bg-gray-300'
               }`}>
-                <p className={`text-xs mb-1 ${darkMode ? 'text-gray-400' : 'text-purple-100'}`}>
+                <p className={`text-xs mb-1 ${darkMode ? 'text-gray-400' : 'text-gray-700'}`}>
                   Logged in as
                 </p>
-                <p className={`text-sm font-bold ${darkMode ? 'text-white' : 'text-white'}`}>
+                <p className={`text-sm font-bold ${darkMode ? 'text-white' : 'text-black'}`}>
                   {userRole === 'admin' ? 'Admin' : 'Viewer'}
                 </p>
-                <p className={`text-xs mt-1 ${darkMode ? 'text-gray-400' : 'text-purple-200'}`}>
+                <p className={`text-xs mt-1 ${darkMode ? 'text-gray-400' : 'text-gray-700'}`}>
                   {userRole === 'admin' ? 'Full Access' : 'View Only'}
                 </p>
               </div>
@@ -205,7 +205,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, userRole, dar
               <button className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${
                 darkMode
                   ? 'text-gray-300 hover:bg-gray-700'
-                  : 'text-purple-100 hover:bg-white hover:bg-opacity-10'
+                  : 'text-black hover:bg-gray-300'
               }`}>
                 <LogOut size={18} />
                 <span className="text-sm font-medium">Logout</span>
