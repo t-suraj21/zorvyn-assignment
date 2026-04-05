@@ -94,20 +94,20 @@ export const Navbar: React.FC<NavbarProps> = ({
 
             {/* Dark Mode Toggle - Visible on all screens */}
             <motion.button
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
               onClick={onDarkModeToggle}
-              className={`p-2 rounded-lg transition-all duration-300 ${
+              className={`p-2.5 sm:p-2 rounded-lg transition-all duration-300 transform ${
                 darkMode
-                  ? 'bg-gray-700 text-yellow-400 hover:bg-gray-600'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  ? 'bg-gray-700 text-yellow-400 hover:bg-gray-600 shadow-lg'
+                  : 'bg-orange-100 text-orange-600 hover:bg-orange-200 shadow-lg'
               }`}
               title={darkMode ? 'Light Mode' : 'Dark Mode'}
             >
-              {darkMode ? <Sun size={20} /> : <Moon size={20} />}
+              {darkMode ? <Sun size={22} className="sm:w-5 sm:h-5" /> : <Moon size={22} className="sm:w-5 sm:h-5" />}
             </motion.button>
 
-            {/* User Avatar - Visible on sm screens and up */}
+            {/* User Avatar - Only visible on sm and larger screens */}
             <motion.div
               whileHover={{ scale: 1.05 }}
               className={`w-10 h-10 rounded-full bg-linear-to-r from-purple-500 to-blue-500 items-center justify-center cursor-pointer text-white font-bold shadow-lg hidden sm:flex`}
