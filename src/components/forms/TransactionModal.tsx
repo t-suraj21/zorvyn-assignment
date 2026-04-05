@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import type { Transaction, Category, TransactionType } from '../types';
+import type { Transaction, Category, TransactionType } from '../../types';
 import { X } from 'lucide-react';
 
 interface TransactionModalProps {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
-import type { MonthlyData } from '../types';
-import { formatCurrency } from '../utils/calculations';
+import type { MonthlyData } from '../../types';
+import { formatCurrency } from '../../utils';
 
 interface BalanceTrendChartProps {
   data: MonthlyData[];

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Download, FileJson } from 'lucide-react';
-import type { Transaction } from '../types';
-import { downloadCSV, downloadJSON } from '../utils/calculations';
+import type { Transaction } from '../../types';
+import { downloadCSV, downloadJSON } from '../../utils';
 
 interface ExportDataProps {
   transactions: Transaction[];

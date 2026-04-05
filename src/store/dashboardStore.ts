@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import type { DashboardState, Transaction, TransactionType, Category } from '../types';
-import { mockTransactions } from '../data/mockTransactions';
+import { mockTransactions } from '../data';
 
 interface DashboardStore extends DashboardState {
   setUserRole: (role: 'viewer' | 'admin') => void;
@@ -56,7 +56,17 @@ const getInitialState = (): DashboardState => {
 export const useDashboardStore = create<DashboardStore>((set, get) => ({
   ...getInitialState(),
 
-  setUserRole: (role) => set({ userRole: role }),
+  setUserRole: (role) => {
+    set({ userRole: role });
+    // Save to localStorage after role change
+    const state = get();
+    const toSave = {
+      transactions: state.transactions,
+      userRole: role,
+      darkMode: state.darkMode,
+    };
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(toSave));
+  },
 
   setSearchTerm: (term) => set({ searchTerm: term }),
 

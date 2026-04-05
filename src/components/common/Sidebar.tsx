@@ -1,5 +1,5 @@
 import React from 'react';
-import { Home, CreditCard, BarChart3, Settings, LogOut } from 'lucide-react';
+import { Home, CreditCard, BarChart3, Eye, Lock } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 
@@ -8,9 +8,10 @@ interface SidebarProps {
   onClose: () => void;
   userRole: string;
   darkMode: boolean;
+  onRoleChange?: (role: 'viewer' | 'admin') => void;
 }
 
-export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, userRole, darkMode }) => {
+export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, userRole, darkMode, onRoleChange }) => {
   const location = useLocation();
 
   const isActive = (path: string) => location.pathname === path;
@@ -19,7 +20,6 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, userRole, dar
     { icon: Home, label: 'Dashboard', path: '/' },
     { icon: CreditCard, label: 'Transactions', path: '/transactions' },
     { icon: BarChart3, label: 'Analytics', path: '/analytics' },
-    { icon: Settings, label: 'Settings', path: '/settings' },
   ];
 
   return (
@@ -46,7 +46,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, userRole, dar
                 }`}>₹</span>
               </div>
               <div>
-                <h1 className={`text-xl font-bold ${darkMode ? 'text-white' : 'text-black'}`}>FinFlow</h1>
+                <h1 className={`text-xl font-bold ${darkMode ? 'text-white' : 'text-black'}`}>Zorvyn</h1>
                 <p className={`text-xs ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
                   Finance Manager
                 </p>
@@ -80,30 +80,54 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, userRole, dar
 
             {/* User Section */}
             <div className={`border-t ${darkMode ? 'border-gray-700' : 'border-gray-300'} pt-4 mt-auto`}>
-              <div className={`rounded-xl p-4 mb-4 ${
+              <div className={`rounded-xl p-4 ${
                 darkMode
                   ? 'bg-gray-700'
                   : 'bg-gray-300'
               }`}>
-                <p className={`text-xs mb-1 ${darkMode ? 'text-gray-400' : 'text-gray-700'}`}>
-                  Logged in as
+                <p className={`text-xs mb-2 ${darkMode ? 'text-gray-400' : 'text-gray-700'}`}>
+                  Switch Role
                 </p>
-                <p className={`text-sm font-bold ${darkMode ? 'text-white' : 'text-black'}`}>
-                  {userRole === 'admin' ? 'Admin' : 'Viewer'}
-                </p>
-                <p className={`text-xs mt-1 ${darkMode ? 'text-gray-400' : 'text-gray-700'}`}>
-                  {userRole === 'admin' ? 'Full Access' : 'View Only'}
+                <div className="flex gap-2">
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={() => onRoleChange?.('viewer')}
+                    className={`flex-1 flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg font-medium text-xs transition-all ${
+                      userRole === 'viewer'
+                        ? darkMode
+                          ? 'bg-blue-600 text-white shadow-lg'
+                          : 'bg-blue-500 text-white shadow-lg'
+                        : darkMode
+                        ? 'bg-gray-600 text-gray-300 hover:bg-gray-500'
+                        : 'bg-gray-200 text-gray-700 hover:bg-gray-100'
+                    }`}
+                  >
+                    <Eye size={16} />
+                    Viewer
+                  </motion.button>
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={() => onRoleChange?.('admin')}
+                    className={`flex-1 flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg font-medium text-xs transition-all ${
+                      userRole === 'admin'
+                        ? darkMode
+                          ? 'bg-purple-600 text-white shadow-lg'
+                          : 'bg-purple-500 text-white shadow-lg'
+                        : darkMode
+                        ? 'bg-gray-600 text-gray-300 hover:bg-gray-500'
+                        : 'bg-gray-200 text-gray-700 hover:bg-gray-100'
+                    }`}
+                  >
+                    <Lock size={16} />
+                    Admin
+                  </motion.button>
+                </div>
+                <p className={`text-xs mt-2 ${darkMode ? 'text-gray-400' : 'text-gray-700'}`}>
+                  Current: <span className="font-bold">{userRole === 'admin' ? 'Admin' : 'Viewer'}</span>
                 </p>
               </div>
-
-              <button className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${
-                darkMode
-                  ? 'text-gray-300 hover:bg-gray-700'
-                  : 'text-black hover:bg-gray-300'
-              }`}>
-                <LogOut size={18} />
-                <span className="text-sm font-medium">Logout</span>
-              </button>
             </div>
           </div>
         </aside>
@@ -186,30 +210,60 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, userRole, dar
 
             {/* User Section */}
             <div className={`border-t ${darkMode ? 'border-gray-700' : 'border-gray-300'} pt-4 mt-auto`}>
-              <div className={`rounded-xl p-4 mb-4 ${
+              <div className={`rounded-xl p-4 ${
                 darkMode
                   ? 'bg-gray-700'
                   : 'bg-gray-300'
               }`}>
-                <p className={`text-xs mb-1 ${darkMode ? 'text-gray-400' : 'text-gray-700'}`}>
-                  Logged in as
+                <p className={`text-xs mb-2 ${darkMode ? 'text-gray-400' : 'text-gray-700'}`}>
+                  Switch Role
                 </p>
-                <p className={`text-sm font-bold ${darkMode ? 'text-white' : 'text-black'}`}>
-                  {userRole === 'admin' ? 'Admin' : 'Viewer'}
-                </p>
-                <p className={`text-xs mt-1 ${darkMode ? 'text-gray-400' : 'text-gray-700'}`}>
-                  {userRole === 'admin' ? 'Full Access' : 'View Only'}
+                <div className="flex gap-2">
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={() => {
+                      onRoleChange?.('viewer');
+                      onClose();
+                    }}
+                    className={`flex-1 flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg font-medium text-xs transition-all ${
+                      userRole === 'viewer'
+                        ? darkMode
+                          ? 'bg-blue-600 text-white shadow-lg'
+                          : 'bg-blue-500 text-white shadow-lg'
+                        : darkMode
+                        ? 'bg-gray-600 text-gray-300 hover:bg-gray-500'
+                        : 'bg-gray-200 text-gray-700 hover:bg-gray-100'
+                    }`}
+                  >
+                    <Eye size={16} />
+                    Viewer
+                  </motion.button>
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={() => {
+                      onRoleChange?.('admin');
+                      onClose();
+                    }}
+                    className={`flex-1 flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg font-medium text-xs transition-all ${
+                      userRole === 'admin'
+                        ? darkMode
+                          ? 'bg-purple-600 text-white shadow-lg'
+                          : 'bg-purple-500 text-white shadow-lg'
+                        : darkMode
+                        ? 'bg-gray-600 text-gray-300 hover:bg-gray-500'
+                        : 'bg-gray-200 text-gray-700 hover:bg-gray-100'
+                    }`}
+                  >
+                    <Lock size={16} />
+                    Admin
+                  </motion.button>
+                </div>
+                <p className={`text-xs mt-2 ${darkMode ? 'text-gray-400' : 'text-gray-700'}`}>
+                  Current: <span className="font-bold">{userRole === 'admin' ? 'Admin' : 'Viewer'}</span>
                 </p>
               </div>
-
-              <button className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${
-                darkMode
-                  ? 'text-gray-300 hover:bg-gray-700'
-                  : 'text-black hover:bg-gray-300'
-              }`}>
-                <LogOut size={18} />
-                <span className="text-sm font-medium">Logout</span>
-              </button>
             </div>
           </div>
         </motion.aside>

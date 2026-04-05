@@ -1,7 +1,7 @@
 import React from 'react';
 import { PieChart, Pie, Cell, ResponsiveContainer, Legend, Tooltip } from 'recharts';
-import type { CategorySpending } from '../types';
-import { formatCurrency } from '../utils/calculations';
+import type { CategorySpending } from '../../types';
+import { formatCurrency } from '../../utils';
 
 interface SpendingBreakdownChartProps {
   data: CategorySpending[];

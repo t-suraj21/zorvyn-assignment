@@ -1,5 +1,5 @@
 import React from 'react';
-import type { DashboardMetrics } from '../types';
+import type { DashboardMetrics } from '../../types';
 import { TrendingUp, TrendingDown, Target, Zap } from 'lucide-react';
 
 interface InsightsSectionProps {

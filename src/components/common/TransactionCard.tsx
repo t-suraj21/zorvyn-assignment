@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Trash2, Edit2 } from 'lucide-react';
-import type { Transaction } from '../types';
+import type { Transaction } from '../../types';
 
 interface TransactionCardProps {
   transaction: Transaction;

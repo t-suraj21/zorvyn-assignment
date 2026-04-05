@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import type { Transaction } from '../types';
-import { formatCurrency, formatDate } from '../utils/calculations';
+import { formatCurrency, formatDate } from '../../utils';
+import type { Transaction } from '../../types';
 import { Trash2, Edit2 } from 'lucide-react';
 
 interface TransactionListProps {

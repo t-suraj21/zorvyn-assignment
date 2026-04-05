@@ -1,13 +1,11 @@
 import { useEffect, useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { useDashboardStore } from './store/dashboardStore';
+import { useDashboardStore } from './store';
 import { Sidebar, Navbar } from './components';
-import { Dashboard } from './pages/Dashboard';
-import { Transactions } from './pages/Transactions';
-import { Analytics } from './pages/Analytics';
+import { Dashboard, Transactions, Analytics } from './pages';
 
 function App() {
-  const { userRole, darkMode, toggleDarkMode, loadFromLocalStorage } = useDashboardStore();
+  const { userRole, darkMode, toggleDarkMode, loadFromLocalStorage, setUserRole } = useDashboardStore();
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   // Load from localStorage on mount
@@ -32,6 +30,7 @@ function App() {
         onClose={() => setSidebarOpen(false)}
         userRole={userRole}
         darkMode={darkMode}
+        onRoleChange={setUserRole}
       />
 
       {/* Main Content Area - Flex column with margin for fixed sidebar on desktop */}

@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import { motion } from 'framer-motion';
-import { useDashboardStore } from '../store/dashboardStore';
+import { useDashboardStore } from '../store';
 import {
   BalanceTrendChart,
   SpendingBreakdownChart,
@@ -10,7 +10,7 @@ import {
   calculateDashboardMetrics,
   getSpendingByCategory,
   getMonthlyBalance,
-} from '../utils/calculations';
+} from '../utils';
 
 export const Analytics: React.FC = () => {
   const { transactions, darkMode } = useDashboardStore();

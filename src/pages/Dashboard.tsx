@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Plus, DollarSign, TrendingUp, CreditCard, PiggyBank } from 'lucide-react';
-import { useDashboardStore } from '../store/dashboardStore';
+import { useDashboardStore } from '../store';
 import {
   DashboardCard,
   ProfileCard,
@@ -16,7 +16,7 @@ import {
   getSpendingByCategory,
   getMonthlyBalance,
   formatCurrency,
-} from '../utils/calculations';
+} from '../utils';
 import type { Transaction } from '../types';
 
 export const Dashboard: React.FC = () => {

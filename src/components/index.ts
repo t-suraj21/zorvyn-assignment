@@ -1,14 +1,29 @@
-export { SummaryCard } from './SummaryCard';
-export { BalanceTrendChart } from './BalanceTrendChart';
-export { SpendingBreakdownChart } from './SpendingBreakdownChart';
-export { TransactionList } from './TransactionList';
-export { InsightsSection } from './InsightsSection';
-export { FilterBar } from './FilterBar';
-export { Header } from './Header';
-export { TransactionModal } from './TransactionModal';
-export { ExportData } from './ExportData';
-export { Sidebar } from './Sidebar';
-export { Navbar } from './Navbar';
-export { DashboardCard } from './DashboardCard';
-export { ProfileCard } from './ProfileCard';
-export { TransactionCard } from './TransactionCard';
+// Common Components
+export {
+  Navbar,
+  Sidebar,
+  ProfileCard,
+  SummaryCard,
+  DashboardCard,
+  Header,
+  ExportData,
+  TransactionCard,
+} from './common';
+
+// Chart Components
+export {
+  BalanceTrendChart,
+  SpendingBreakdownChart,
+} from './charts';
+
+// Form Components
+export {
+  TransactionModal,
+  FilterBar,
+} from './forms';
+
+// Section Components
+export {
+  InsightsSection,
+  TransactionList,
+} from './sections';

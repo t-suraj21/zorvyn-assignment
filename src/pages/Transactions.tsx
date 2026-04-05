@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Plus, Download } from 'lucide-react';
-import { useDashboardStore } from '../store/dashboardStore';
+import { useDashboardStore } from '../store';
 import {
   TransactionList,
   FilterBar,
@@ -10,7 +10,7 @@ import {
 import {
   filterTransactions,
   formatCurrency,
-} from '../utils/calculations';
+} from '../utils';
 import type { Transaction } from '../types';
 
 export const Transactions: React.FC = () => {

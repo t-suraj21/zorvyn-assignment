@@ -1,6 +1,6 @@
 import React from 'react';
 import { Search, X } from 'lucide-react';
-import type { Category, TransactionType } from '../types';
+import type { Category, TransactionType } from '../../types';
 
 interface FilterBarProps {
   searchTerm: string;
