@@ -97,15 +97,15 @@ export const Transactions: React.FC = () => {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3 }}
-          className="mb-8 flex items-center justify-between"
+          className="mb-8 flex flex-col gap-4"
         >
           <div>
-            <h2 className={`text-3xl font-bold ${darkMode ? 'text-white' : 'text-black'}`}>All Transactions</h2>
-            <p className={`${darkMode ? 'text-gray-400' : 'text-gray-700'} mt-1`}>
+            <h2 className={`text-2xl sm:text-3xl font-bold ${darkMode ? 'text-white' : 'text-black'}`}>All Transactions</h2>
+            <p className={`text-xs sm:text-sm ${darkMode ? 'text-gray-400' : 'text-gray-700'} mt-1`}>
               View and manage all your transactions
             </p>
           </div>
-          <div className="flex gap-4">
+          <div className="flex flex-col sm:flex-row gap-2 sm:gap-4">
             {userRole === 'admin' && (
               <motion.button
                 whileHover={{ scale: 1.05 }}
@@ -114,20 +114,22 @@ export const Transactions: React.FC = () => {
                   setEditingTransaction(undefined);
                   setModalOpen(true);
                 }}
-                className="flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium shadow-md"
+                className="flex items-center justify-center gap-1 sm:gap-2 px-3 sm:px-6 py-2 sm:py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium text-sm sm:text-base shadow-md"
               >
-                <Plus size={20} />
-                Add Transaction
+                <Plus size={18} />
+                <span className="hidden sm:inline">Add Transaction</span>
+                <span className="sm:hidden">Add</span>
               </motion.button>
             )}
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={handleExport}
-              className="flex items-center gap-2 px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors font-medium shadow-md"
+              className="flex items-center justify-center gap-1 sm:gap-2 px-3 sm:px-6 py-2 sm:py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors font-medium text-sm sm:text-base shadow-md"
             >
-              <Download size={20} />
-              Export CSV
+              <Download size={18} />
+              <span className="hidden sm:inline">Export CSV</span>
+              <span className="sm:hidden">Export</span>
             </motion.button>
           </div>
         </motion.div>
@@ -137,7 +139,7 @@ export const Transactions: React.FC = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3, delay: 0.1 }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 mb-8"
         >
           <div className={`${darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'} rounded-lg border-2 p-6 shadow-sm`}>
             <p className={`${darkMode ? 'text-gray-400' : 'text-gray-700'} text-sm font-medium`}>Total Transactions</p>

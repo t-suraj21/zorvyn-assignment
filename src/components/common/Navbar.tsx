@@ -67,11 +67,11 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           {/* Right: Icons & Profile */}
           <div className="flex items-center gap-2 sm:gap-4">
-            {/* Notifications */}
+            {/* Notifications - Desktop only */}
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className={`relative p-2 rounded-lg transition-colors ${
+              className={`hidden lg:flex relative p-2 rounded-lg transition-colors ${
                 darkMode
                   ? 'hover:bg-gray-700 text-gray-300'
                   : 'hover:bg-gray-100 text-gray-700'
@@ -81,11 +81,11 @@ export const Navbar: React.FC<NavbarProps> = ({
               <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full animate-pulse" />
             </motion.button>
 
-            {/* Settings */}
+            {/* Settings - Desktop only */}
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className={`p-2 rounded-lg transition-colors ${
+              className={`hidden lg:flex p-2 rounded-lg transition-colors ${
                 darkMode
                   ? 'hover:bg-gray-700 text-gray-300'
                   : 'hover:bg-gray-100 text-gray-700'
@@ -94,12 +94,12 @@ export const Navbar: React.FC<NavbarProps> = ({
               <Settings size={20} />
             </motion.button>
 
-            {/* Dark Mode Toggle */}
+            {/* Dark Mode Toggle - Desktop only */}
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={onDarkModeToggle}
-              className={`p-2 rounded-lg transition-colors ${
+              className={`hidden lg:flex p-2 rounded-lg transition-colors ${
                 darkMode
                   ? 'bg-gray-700 text-yellow-400 hover:bg-gray-600'
                   : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
@@ -108,7 +108,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               {darkMode ? <Sun size={20} /> : <Moon size={20} />}
             </motion.button>
 
-            {/* User Avatar */}
+            {/* User Avatar - Visible on all screens */}
             <motion.div
               whileHover={{ scale: 1.05 }}
               className={`w-10 h-10 rounded-full bg-gradient-to-r from-purple-500 to-blue-500 flex items-center justify-center cursor-pointer text-white font-bold shadow-lg`}

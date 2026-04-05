@@ -1,5 +1,5 @@
 import React from 'react';
-import { Home, CreditCard, BarChart3, Eye, Lock } from 'lucide-react';
+import { Home, CreditCard, BarChart3, Eye, Lock, Moon, Sun } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 
@@ -9,9 +9,10 @@ interface SidebarProps {
   userRole: string;
   darkMode: boolean;
   onRoleChange?: (role: 'viewer' | 'admin') => void;
+  onDarkModeToggle?: () => void;
 }
 
-export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, userRole, darkMode, onRoleChange }) => {
+export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, userRole, darkMode, onRoleChange, onDarkModeToggle }) => {
   const location = useLocation();
 
   const isActive = (path: string) => location.pathname === path;
@@ -210,7 +211,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, userRole, dar
 
             {/* User Section */}
             <div className={`border-t ${darkMode ? 'border-gray-700' : 'border-gray-300'} pt-4 mt-auto`}>
-              <div className={`rounded-xl p-4 ${
+              <div className={`rounded-xl p-4 mb-4 ${
                 darkMode
                   ? 'bg-gray-700'
                   : 'bg-gray-300'
@@ -263,6 +264,47 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, userRole, dar
                 <p className={`text-xs mt-2 ${darkMode ? 'text-gray-400' : 'text-gray-700'}`}>
                   Current: <span className="font-bold">{userRole === 'admin' ? 'Admin' : 'Viewer'}</span>
                 </p>
+              </div>
+
+              {/* Dark Mode Toggle - Mobile only */}
+              <div className={`lg:hidden rounded-xl p-4 ${
+                darkMode
+                  ? 'bg-gray-700'
+                  : 'bg-gray-300'
+              }`}>
+                <p className={`text-xs mb-2 ${darkMode ? 'text-gray-400' : 'text-gray-700'}`}>
+                  Theme
+                </p>
+                <div className="flex gap-2">
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={() => !darkMode && onDarkModeToggle?.()}
+                    className={`flex-1 flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg font-medium text-xs transition-all ${
+                      !darkMode
+                        ? 'bg-orange-500 text-white shadow-lg'
+                        : darkMode
+                        ? 'bg-gray-600 text-gray-300 hover:bg-gray-500'
+                        : 'bg-gray-200 text-gray-700 hover:bg-gray-100'
+                    }`}
+                  >
+                    <Sun size={16} />
+                    Light
+                  </motion.button>
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={() => darkMode && onDarkModeToggle?.()}
+                    className={`flex-1 flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg font-medium text-xs transition-all ${
+                      darkMode
+                        ? 'bg-gray-600 text-white shadow-lg'
+                        : 'bg-gray-200 text-gray-700 hover:bg-gray-100'
+                    }`}
+                  >
+                    <Moon size={16} />
+                    Dark
+                  </motion.button>
+                </div>
               </div>
             </div>
           </div>

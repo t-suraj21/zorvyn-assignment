@@ -31,6 +31,7 @@ function App() {
         userRole={userRole}
         darkMode={darkMode}
         onRoleChange={setUserRole}
+        onDarkModeToggle={toggleDarkMode}
       />
 
       {/* Main Content Area - Flex column with margin for fixed sidebar on desktop */}

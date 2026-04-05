@@ -34,8 +34,8 @@ export const Analytics: React.FC = () => {
           transition={{ duration: 0.3 }}
           className="mb-8"
         >
-          <h2 className={`text-3xl font-bold ${darkMode ? 'text-white' : 'text-black'}`}>Analytics</h2>
-          <p className={`${darkMode ? 'text-gray-400' : 'text-gray-700'} mt-1`}>
+          <h2 className={`text-2xl sm:text-3xl font-bold ${darkMode ? 'text-white' : 'text-black'}`}>Analytics</h2>
+          <p className={`text-xs sm:text-sm ${darkMode ? 'text-gray-400' : 'text-gray-700'} mt-1`}>
             Deep dive into your financial data and trends
           </p>
         </motion.div>
@@ -76,29 +76,29 @@ export const Analytics: React.FC = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3, delay: 0.3 }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6"
         >
-          <div className={`${darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'} rounded-lg border-2 p-6 shadow-sm`}>
-            <p className={`${darkMode ? 'text-gray-400' : 'text-gray-700'} text-sm font-medium`}>Average Income</p>
-            <p className={`text-2xl font-bold ${darkMode ? 'text-green-400' : 'text-green-600'} mt-2`}>
+          <div className={`${darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'} rounded-lg border-2 p-4 sm:p-6 shadow-sm`}>
+            <p className={`${darkMode ? 'text-gray-400' : 'text-gray-700'} text-xs sm:text-sm font-medium`}>Average Income</p>
+            <p className={`text-xl sm:text-2xl font-bold ${darkMode ? 'text-green-400' : 'text-green-600'} mt-2`}>
               ${Math.round(metrics.totalIncome / Math.max(1, transactions.filter(t => t.type === 'income').length))}
             </p>
           </div>
-          <div className={`${darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'} rounded-lg border-2 p-6 shadow-sm`}>
-            <p className={`${darkMode ? 'text-gray-400' : 'text-gray-700'} text-sm font-medium`}>Average Expense</p>
-            <p className={`text-2xl font-bold ${darkMode ? 'text-red-400' : 'text-red-600'} mt-2`}>
+          <div className={`${darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'} rounded-lg border-2 p-4 sm:p-6 shadow-sm`}>
+            <p className={`${darkMode ? 'text-gray-400' : 'text-gray-700'} text-xs sm:text-sm font-medium`}>Average Expense</p>
+            <p className={`text-xl sm:text-2xl font-bold ${darkMode ? 'text-red-400' : 'text-red-600'} mt-2`}>
               ${Math.round(metrics.totalExpenses / Math.max(1, transactions.filter(t => t.type === 'expense').length))}
             </p>
           </div>
-          <div className={`${darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'} rounded-lg border-2 p-6 shadow-sm`}>
-            <p className={`${darkMode ? 'text-gray-400' : 'text-gray-700'} text-sm font-medium`}>Saving Rate</p>
-            <p className={`text-2xl font-bold ${darkMode ? 'text-blue-400' : 'text-blue-600'} mt-2`}>
+          <div className={`${darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'} rounded-lg border-2 p-4 sm:p-6 shadow-sm`}>
+            <p className={`${darkMode ? 'text-gray-400' : 'text-gray-700'} text-xs sm:text-sm font-medium`}>Saving Rate</p>
+            <p className={`text-xl sm:text-2xl font-bold ${darkMode ? 'text-blue-400' : 'text-blue-600'} mt-2`}>
               {metrics.totalIncome > 0 ? Math.round(((metrics.totalIncome - metrics.totalExpenses) / metrics.totalIncome) * 100) : 0}%
             </p>
           </div>
-          <div className={`${darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'} rounded-lg border-2 p-6 shadow-sm`}>
-            <p className={`${darkMode ? 'text-gray-400' : 'text-gray-700'} text-sm font-medium`}>Total Transactions</p>
-            <p className={`text-2xl font-bold ${darkMode ? 'text-purple-400' : 'text-purple-600'} mt-2`}>
+          <div className={`${darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'} rounded-lg border-2 p-4 sm:p-6 shadow-sm`}>
+            <p className={`${darkMode ? 'text-gray-400' : 'text-gray-700'} text-xs sm:text-sm font-medium`}>Total Transactions</p>
+            <p className={`text-xl sm:text-2xl font-bold ${darkMode ? 'text-purple-400' : 'text-purple-600'} mt-2`}>
               {transactions.length}
             </p>
           </div>
