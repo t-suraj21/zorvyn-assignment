@@ -1,12 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { useDashboardStore } from './store';
 import { Sidebar, Navbar } from './components';
-import { Dashboard, Transactions, Analytics } from './pages';
+import { Dashboard, Transactions, Analytics, Bills, Goals, Recurring } from './pages';
 
 function App() {
   const { userRole, darkMode, toggleDarkMode, loadFromLocalStorage, setUserRole } = useDashboardStore();
-  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   // Load from localStorage on mount
   useEffect(() => {
@@ -24,14 +23,11 @@ function App() {
 
   return (
     <div className="h-screen bg-gray-50 dark:bg-gray-900 transition-colors overflow-hidden">
-      {/* Sidebar - Fixed position on desktop, animated overlay on mobile */}
+      {/* Sidebar - Fixed position on desktop, bottom navigation on mobile */}
       <Sidebar
-        isOpen={sidebarOpen}
-        onClose={() => setSidebarOpen(false)}
         userRole={userRole}
         darkMode={darkMode}
         onRoleChange={setUserRole}
-        onDarkModeToggle={toggleDarkMode}
       />
 
       {/* Main Content Area - Flex column with margin for fixed sidebar on desktop */}
@@ -41,17 +37,18 @@ function App() {
           <Navbar
             darkMode={darkMode}
             onDarkModeToggle={toggleDarkMode}
-            onMenuToggle={() => setSidebarOpen(!sidebarOpen)}
-            menuOpen={sidebarOpen}
           />
         </div>
 
-        {/* Page Content - Scrollable */}
-        <main className="flex-1 overflow-y-auto w-full">
+        {/* Page Content - Scrollable with padding for mobile bottom nav */}
+        <main className="flex-1 overflow-y-auto w-full pb-20 lg:pb-0">
           <Routes>
             <Route path="/" element={<Dashboard />} />
             <Route path="/transactions" element={<Transactions />} />
             <Route path="/analytics" element={<Analytics />} />
+            <Route path="/bills" element={<Bills />} />
+            <Route path="/goals" element={<Goals />} />
+            <Route path="/recurring" element={<Recurring />} />
           </Routes>
         </main>
       </div>
