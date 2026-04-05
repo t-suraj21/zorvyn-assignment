@@ -176,7 +176,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, userRole, dar
                 }`}>₹</span>
               </div>
               <div>
-                <h1 className={`text-xl font-bold ${darkMode ? 'text-white' : 'text-black'}`}>FinFlow</h1>
+                <h1 className={`text-xl font-bold ${darkMode ? 'text-white' : 'text-black'}`}>Zorvyn</h1>
                 <p className={`text-xs ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
                   Finance Manager
                 </p>

@@ -35,7 +35,7 @@ function App() {
       />
 
       {/* Main Content Area - Flex column with margin for fixed sidebar on desktop */}
-      <div className="flex flex-col h-screen lg:ml-64">
+      <div className="flex flex-col h-screen lg:ml-64 overflow-hidden">
         {/* Navbar - Sticky at Top */}
         <div className="sticky top-0 z-40">
           <Navbar
@@ -47,7 +47,7 @@ function App() {
         </div>
 
         {/* Page Content - Scrollable */}
-        <main className="flex-1 overflow-y-auto">
+        <main className="flex-1 overflow-y-auto w-full">
           <Routes>
             <Route path="/" element={<Dashboard />} />
             <Route path="/transactions" element={<Transactions />} />
