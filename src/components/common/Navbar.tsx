@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Moon, Sun, Bell, Settings, Search, ChevronDown, Eye, Lock } from 'lucide-react';
+import { Moon, Sun, Bell, Search, ChevronDown, Eye, Lock } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 interface NavbarProps {
