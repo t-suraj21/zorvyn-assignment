@@ -32,7 +32,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, userRole, dar
             darkMode
               ? 'bg-gradient-to-b from-gray-800 to-gray-900'
               : 'bg-gradient-to-b from-gray-100 to-gray-200'
-          } h-screen w-64 shadow-2xl overflow-y-auto`}
+          } h-screen w-64 shadow-2xl overflow-y-auto transition-colors duration-300`}
         >
           <div className="p-6">
             {/* Logo */}
@@ -156,7 +156,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, userRole, dar
             darkMode
               ? 'bg-gradient-to-b from-gray-800 to-gray-900'
               : 'bg-gradient-to-b from-gray-100 to-gray-200'
-          } fixed left-0 top-0 h-screen w-64 shadow-2xl z-50 overflow-y-auto`}
+          } fixed left-0 top-0 h-screen w-64 shadow-2xl z-50 overflow-y-auto transition-colors duration-300`}
         >
           <div className="p-6">
             {/* Logo */}
@@ -267,25 +267,27 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, userRole, dar
               </div>
 
               {/* Dark Mode Toggle - Mobile only */}
-              <div className={`lg:hidden rounded-xl p-4 ${
-                darkMode
-                  ? 'bg-gray-700'
-                  : 'bg-gray-300'
-              }`}>
-                <p className={`text-xs mb-2 ${darkMode ? 'text-gray-400' : 'text-gray-700'}`}>
+              <motion.div 
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.15 }}
+                className={`lg:hidden rounded-xl p-4 transition-colors duration-300 ${
+                  darkMode
+                    ? 'bg-gray-700'
+                    : 'bg-gray-300'
+                }`}>
+                <p className={`text-xs mb-2 font-medium transition-colors duration-300 ${darkMode ? 'text-gray-400' : 'text-gray-700'}`}>
                   Theme
                 </p>
                 <div className="flex gap-2">
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    onClick={() => !darkMode && onDarkModeToggle?.()}
-                    className={`flex-1 flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg font-medium text-xs transition-all ${
+                    onClick={onDarkModeToggle}
+                    className={`flex-1 flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg font-medium text-xs transition-all duration-300 ${
                       !darkMode
                         ? 'bg-orange-500 text-white shadow-lg'
-                        : darkMode
-                        ? 'bg-gray-600 text-gray-300 hover:bg-gray-500'
-                        : 'bg-gray-200 text-gray-700 hover:bg-gray-100'
+                        : 'bg-gray-600 text-gray-300 hover:bg-gray-500'
                     }`}
                   >
                     <Sun size={16} />
@@ -294,8 +296,8 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, userRole, dar
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    onClick={() => darkMode && onDarkModeToggle?.()}
-                    className={`flex-1 flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg font-medium text-xs transition-all ${
+                    onClick={onDarkModeToggle}
+                    className={`flex-1 flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg font-medium text-xs transition-all duration-300 ${
                       darkMode
                         ? 'bg-gray-600 text-white shadow-lg'
                         : 'bg-gray-200 text-gray-700 hover:bg-gray-100'
@@ -305,7 +307,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, userRole, dar
                     Dark
                   </motion.button>
                 </div>
-              </div>
+              </motion.div>
             </div>
           </div>
         </motion.aside>

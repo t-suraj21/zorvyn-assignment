@@ -25,7 +25,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         darkMode
           ? 'bg-gray-800 border-gray-700'
           : 'bg-white border-gray-200'
-      } border-b sticky top-0 z-40 backdrop-blur-xl bg-opacity-80`}
+      } border-b sticky top-0 z-40 backdrop-blur-xl bg-opacity-80 transition-all duration-300`}
     >
       <div className="px-4 sm:px-6 lg:px-8 py-3">
         <div className="flex items-center justify-between gap-6">
@@ -99,7 +99,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={onDarkModeToggle}
-              className={`hidden lg:flex p-2 rounded-lg transition-colors ${
+              className={`hidden lg:flex p-2 rounded-lg transition-all duration-300 ${
                 darkMode
                   ? 'bg-gray-700 text-yellow-400 hover:bg-gray-600'
                   : 'bg-gray-100 text-gray-700 hover:bg-gray-200'

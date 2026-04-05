@@ -1,1 +1,33 @@
 @import "tailwindcss";
+
+/* Smooth Dark Mode Transitions */
+* {
+  @apply transition-colors duration-300;
+}
+
+html, body, #root {
+  @apply transition-colors duration-300;
+}
+
+/* Prevent transition on load */
+html.prefers-no-transition,
+html.prefers-no-transition * {
+  @apply !transition-none !duration-0;
+}
+
+/* Smooth scrollbar transitions */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-200 dark:bg-gray-800 transition-colors duration-300;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-400 dark:bg-gray-600 rounded-full transition-colors duration-300;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-500 dark:bg-gray-500 transition-colors duration-300;
+}
